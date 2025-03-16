@@ -1,0 +1,14 @@
+# use an existing docker image as a base
+FROM node:lts-alpine
+
+
+# download and install a dependency
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+# tell the image what to do when it starts as a container
+CMD ["npm", "run", "start"]
